@@ -16,7 +16,7 @@ print_loop:
     push ecx                ; save loop counter
     mov ecx, str_msg
     mov edx, len
-    int 0x80
+    int 0x80                                                                                                                                            
     pop ecx                 ; restore loop counter from stack
 
     loop print_loop          ; decrements ecx, jumps if not 0
