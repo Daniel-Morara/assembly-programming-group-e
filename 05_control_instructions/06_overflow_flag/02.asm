@@ -1,7 +1,9 @@
 ; JNO → Jump if No Overflow
 section .data
-    msg_ov db "Overflow (OF=1)",10,0
-    msg_noov db "No overflow (OF=0)",10,0
+    msg_ov db "Overflow (OF=1) - Daniel Morara 168326",10,0
+    len_ov equ $ - msg_ov
+    msg_noov db "No overflow (OF=0) - Daniel Morara 168326",10,0
+    len_noov equ $ - msg_noov
 
 section .text
     global _start
@@ -15,11 +17,11 @@ _start:
 
 nooverflow:
     mov ecx, msg_noov
+    mov edx, len_noov
 
 print:
     mov eax,4
     mov ebx,1
-    mov edx,40
     int 0x80
 
     mov eax,1

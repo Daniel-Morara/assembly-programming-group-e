@@ -1,9 +1,10 @@
 ; JNP / JPO → Jump if Parity Odd
-
 ; jnp.asm
 section .data
-    msg_even db "Parity Even (PF=1)",10,0
-    msg_odd db "Parity Odd (PF=0)",10,0
+    msg_even db "Parity Even (PF=1) - Daniel Morara 168326",10,0
+    len_even equ $ - msg_even
+    msg_odd db "Parity Odd (PF=0) - Daniel Morara 168326",10,0
+    len_odd equ $ - msg_odd
 
 section .text
     global _start
@@ -13,15 +14,16 @@ _start:
     jnp odd
 
     mov ecx, msg_even
+    mov edx, len_even
     jmp print
 
 odd:
     mov ecx, msg_odd
+    mov edx, len_odd
 
 print:
     mov eax,4
     mov ebx,1
-    mov edx,40
     int 0x80
 
     mov eax,1
