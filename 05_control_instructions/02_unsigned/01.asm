@@ -23,9 +23,10 @@ above:
     mov edx, len_above
 
 print:
-    mov eax,4
-    mov ebx,1
-    int 0x80
+    mov eax,4  ; display
+    mov ebx,1  ; how to display stdout
+    mov edx,30 ; len of what to display
+    int 0x80   ; call
 
     mov eax,1
     xor ebx,ebx
